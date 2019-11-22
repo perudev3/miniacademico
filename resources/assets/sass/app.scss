@@ -12,3 +12,51 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+//Modal
+.modal {
+  align-items: flex-start;
+  background-color: #fff;
+  display: flex !important;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  transition: all 0.40s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+.modal.mostrar {
+  background-color: rgba(0,0,0,.5);
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal.mostrar .modal-content {
+  opacity: 1;
+  transform: scale(1.1);
+  visibility: visible;
+}
+
+.modal .close {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 22.5px;
+  transform: translateY(-50%);
+}
+
+.modal .modal-content {
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  margin-top: 50px;
+  opacity: 0;
+  padding: 12px;
+  transform: scale(1);
+  transition: all .40s cubic-bezier(0.39, 0.575, 0.565, 1);
+  visibility: hidden;
+}

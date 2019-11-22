@@ -28,3 +28,11 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 
+Route::get('docente', function(){
+	return view('docente');
+})->name('docente');
+
+Route::get('/api/getdocente', 'DocenteController@GetDataDocente');
+Route::post('/api/docente', 'DocenteController@PostDocente');
+Route::delete('/api/docente', 'DocenteController@DeleteDocente');
+Route::put('/api/docente', 'DocenteController@UpdateDocente');
