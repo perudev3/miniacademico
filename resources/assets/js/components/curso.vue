@@ -12,33 +12,42 @@
 	                            <div class="row">	                            	 
 	                            
                                     <div class="col-md-6">
-	                                    <label>Nombres</label>
+	                                    <label>Especialidad</label>
 	                                    
-	                                    <input type="text" v-model="nombre" class="form-control">
+	                                    <input type="text" v-model="especialidad" class="form-control">
 	                                    
                                     </div>
 	                            
                                 
                                     <div class="col-md-6">
-                                        <label>Apellidos</label>
+                                        <label>Duracion</label>
                                         
-                                        <input type="text" v-model="apellidos" class="form-control">
+                                        <input type="text" v-model="duracion" class="form-control">
                                         
                                     </div>
                                 </div>
                                 <div class="row">
                                     
                                     <div class="col-md-6">
-                                        <label>Direccion :</label>
+                                        <label>Modalidad :</label>
                                             
-                                        <input type="text" v-model="direccion" class="form-control">
+                                        <input type="text" v-model="modalidad" class="form-control">
                                             
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label>Telefono :</label>
+                                        <label>Horario :</label>
                                             
-                                        <input type="text" v-model="celular" class="form-control">
+                                        <input type="text" v-model="horario" class="form-control">
+                                            
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    
+                                    <div class="col-md-6">
+                                        <label>Inicio de Clases :</label>
+                                            
+                                        <input type="text" v-model="inicioclases" class="form-control">
                                             
                                     </div>
                                 </div>
@@ -47,41 +56,43 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" @click="cerrarModal()">Cerrar</button>
-                            <button type="button" v-if="tipoAccion==1" class="btn btn-primary animated" @click="RegistrarDocente()">Guardar</button>
-                            <button type="button" v-if="tipoAccion==2" class="btn btn-primary animated" @click="ActualizarDocente()">Actualizar</button>
+                            <button type="button" v-if="tipoAccion==1" class="btn btn-primary animated" @click="RegistrarCurso()">Guardar</button>
+                            <button type="button" v-if="tipoAccion==2" class="btn btn-primary animated" @click="ActualizarCurso()">Actualizar</button>
                         </div>
                     </div>
             </div>
 	        <div class="col-md-8">
 	        	<div>
 			    	<section style="padding: 20px">
-			            <button class="btn btn-primary" @click="abrirModal('agregar')">Nuevo Docente</button>		            
+			            <button class="btn btn-primary" @click="abrirModal('agregar')">Nuevo Curso</button>		            
 			        </section>
 			    </div>
 	            <div class="card table-responsive">
-	                <div class="card-header">Docentes</div>
+	                <div class="card-header">Cursos</div>
 
 	                <table class="table table-striped dataTable table-bordered table-sm">
 	                	<thead>
 	                		<tr>
-	                			<th>Nombre</th>
-		                		<th>Apellidos</th>
-		                		<th>Direccion</th>
-		                		<th>Celular</th>
+	                			<th>Especialidad</th>
+		                		<th>Duracion</th>
+		                		<th>Modalidad</th>
+		                		<th>Horario</th>
+		                		<th>Inicio de Clases</th>
 		                		<th>
 		                			Opciones
 		                		</th>
 	                		</tr>	                		
 	                	</thead>
 	                	<tbody>
-	                		<tr v-for="datadocentes in docentes" :key="datadocentes.idDocente">
-	                			<td>{{datadocentes.docente_nombres}}</td>
-	                			<td>{{datadocentes.docente_apellidos}}</td>
-	                			<td>{{datadocentes.docente_direccion}}</td>
-	                			<td>{{datadocentes.docente_celular}}</td>
+	                		<tr v-for="datacursos in cursos" :key="datacursos.idCurso">
+	                			<td>{{datacursos.curso_especialidad}}</td>
+	                			<td>{{datacursos.curso_duracion}}</td>
+	                			<td>{{datacursos.curso_modalidad}}</td>
+	                			<td>{{datacursos.curso_horario}}</td>
+	                			<td>{{datacursos.curso_inicio_clases}}</td>
 	                			<td>
-	                				<button name="Editar" class="btn btn-primary" @click="abrirModal('editar',datadocentes)">Editar</button>
-				                   <button name="eliminar" class="btn btn-yellow" @click="EliminarDocente(datadocentes.idDocente)">Eliminar</button>
+	                				<button name="Editar" class="btn btn-primary" @click="abrirModal('editar',datacursos)">Editar</button>
+				                   <button name="eliminar" class="btn btn-yellow" @click="EliminarCurso(datacursos.idCurso)">Eliminar</button>
 	                			</td>
 	                		</tr>
 	                	</tbody>
@@ -98,16 +109,17 @@
      export default {
 	        data:function(){
 	                return {
-	                    docentes:[],
-	                    docente:{},
+	                    cursos:[],
+	                    curso:{},
 	                    modal : 0,
 	                    tituloModal:'',
 	                    tipoAccion:0,
 	                    id:'',
-	                    nombre:'',
-	                    apellidos:'',
-	                    direccion:'',
-	                    celular:'',
+	                    especialidad:'',
+	                    duracion:'',
+	                    modalidad:'',
+	                    horario:'',
+	                    inicioclases:'',
 	                    contador: 1,
 	                    limit: 3,
 	                 }
@@ -123,92 +135,96 @@
                             case 'agregar':
                             {
                                 this.modal = 1;
-                                this.tituloModal = 'Agregar Docente';
+                                this.tituloModal = 'Agregar Curso';
                                 this.tipoAccion = 1;
-                                this.nombre='';
-                                this.apellidos='';
-                                this.direccion='';
-                                this.celular='';
+                                this.especialidad='';
+                                this.duracion='';
+                                this.modalidad='';
+                                this.horario='';
+                                this.inicioclases='';
                                 break;
                             }
                             case 'editar':
                             {
                             	this.modal=1;
-                                this.tituloModal='Actualizar Datos de Docente';
+                                this.tituloModal='Actualizar Datos de Curso';
                                 this.tipoAccion=2;
-                                this.id=data['idDocente'];
-                                this.nombre=data['docente_nombres'];
-                                this.apellidos = data['docente_apellidos'];
-                                this.direccion = data['docente_direccion'];
-                                this.celular=data['docente_celular'];
+                                this.id=data['idCurso'];
+                                this.especialidad=data['curso_especialidad'];
+                                this.duracion = data['curso_duracion'];
+                                this.modalidad = data['curso_modalidad'];
+                                this.horario=data['curso_horario'];
+                                this.inicioclases=data['curso_inicio_clases'];
                                 break;  
                             }
                         }
                 },
 
-	            DataDocente(){
+	            DataCurso(){
 	            	let me = this;
-	                 axios.get('/api/getdocente').then(function(response){
-	                    me.docentes=response.data;
-	                    console.log(me.docentes);
+	                 axios.get('/api/getcurso').then(function(response){
+	                    me.cursos=response.data;
+	                    console.log(me.cursos);
 	                 })
 	            },
 
-	            EliminarDocente(id){
+	            EliminarCurso(id){
 	            	let me = this;
-	                axios.delete('/api/docente/' + id).then(function(data){
+	                axios.delete('/api/curso/' + id).then(function(data){
 	                	if (data.data.status === 'success') {
-                    			me.DataDocente();
+                    			me.DataCurso();
                          		console.log("exito!!");
                         } else {
-                        		me.DataDocente();
+                        		me.DataCurso();
                           		console.log("Error");
                         };
 	                })
 	            },
 
 
-	            ActualizarDocente(){
+	            ActualizarCurso(){
 	            	let me = this;
-	                axios.put('/api/docente',{
+	                axios.put('/api/curso',{
 	                	'id':me.id,
-	                	'docente_nombres':me.nombre,
-	                	'docente_apellidos':me.apellidos,
-	                	'docente_direccion':me.direccion,
-	                	'docente_celular':me.celular
+	                	'curso_especialidad':me.especialidad,
+	                	'curso_duracion':me.duracion,
+	                	'curso_modalidad':me.modalidad,
+	                	'curso_horario':me.horario,
+	                	'curso_inicio_clases':me.inicioclases
 
 	                }).then(function(data){
 	                    if (data.data.status === 'success') {
                     			
                     			me.cerrarModal();
-                    			me.DataDocente();
+                    			me.DataCurso();
                          		console.log("exito!!");
                         } else {
                         		
                     			me.cerrarModal();
-                    			me.DataDocente();
+                    			me.DataCurso();
                           		console.log("Error");
                         };
 	                })
 	            },
 
 
-	            RegistrarDocente(){
+	            RegistrarCurso(){
 	            	let me = this;
-	                axios.post('/api/docente',{
-	                	'docente_nombres':me.nombre,
-	                	'docente_apellidos':me.apellidos,
-	                	'docente_direccion':me.direccion,
-	                	'docente_celular':me.celular
+	                axios.post('/api/curso',{
+	                	'curso_especialidad':me.especialidad,
+	                	'curso_duracion':me.duracion,
+	                	'curso_modalidad':me.modalidad,
+	                	'curso_horario':me.horario,
+	                	'curso_inicio_clases':me.inicioclases
 	                }).then(function(data){
 	                    if (data.data.status === 'success') {
                        			me.cerrarModal();
-                    			me.DataDocente();
+                    			me.DataCurso();
                          		console.log("exito!!");
                         } else {
                         		
                     			me.cerrarModal();
-                    			me.DataDocente();
+                    			me.DataCurso();
                           		console.log("Error");
                         };
 	                })
@@ -219,7 +235,7 @@
 	        mounted:function(){
 	        	let self = this
 	            setTimeout(function(){
-	                self.DataDocente();
+	                self.DataCurso();
 	            },2000);
 	        }
 

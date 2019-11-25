@@ -34,5 +34,25 @@ Route::get('docente', function(){
 
 Route::get('/api/getdocente', 'DocenteController@GetDataDocente');
 Route::post('/api/docente', 'DocenteController@PostDocente');
-Route::delete('/api/docente', 'DocenteController@DeleteDocente');
+Route::delete('/api/docente/{id}', 'DocenteController@DeleteDocente');
 Route::put('/api/docente', 'DocenteController@UpdateDocente');
+
+
+Route::get('curso', function(){
+	return view('curso');
+})->name('curso');
+
+Route::get('/api/getcurso', 'CursoController@GetDataCurso');
+Route::post('/api/curso', 'CursoController@PostCurso');
+Route::delete('/api/curso/{id}', 'CursoController@DeleteCurso');
+Route::put('/api/curso', 'CursoController@UpdateCurso');
+
+
+Route::get('alumno', function(){
+	return view('alumno');
+})->name('alumno');
+
+Route::get('/api/getalumno', 'AlumnoController@GetDataAlumno');
+Route::post('/api/alumno', 'AlumnoController@PostAlumno');
+Route::delete('/api/alumno/{id}', 'AlumnoController@DeleteAlumno');
+Route::put('/api/alumno', 'AlumnoController@UpdateAlumno');

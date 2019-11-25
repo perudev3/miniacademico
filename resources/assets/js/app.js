@@ -8,6 +8,8 @@ window.Vue.use(VueRouter);
 
 
 import viewdocente from './components/docente.vue';
+import viewcurso from './components/curso.vue';
+import viewalumno from './components/alumno.vue';
 
 
 
@@ -16,6 +18,8 @@ const routes = [
             path: '/',
             components: {
                 docente: viewdocente,
+                curso: viewcurso,
+                alumno: viewalumno,
             	
             }
     }

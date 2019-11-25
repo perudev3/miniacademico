@@ -16,7 +16,7 @@ class Curso extends Migration
         Schema::create('curso', function (Blueprint $table) {
             $table->increments('idCurso');
             $table->string('curso_especialidad');
-            $table->time('curso_duracion');
+            $table->string('curso_duracion');
             $table->string('curso_modalidad');
             $table->string('curso_horario');
             $table->string('curso_inicio_clases');
