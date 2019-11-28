@@ -53224,6 +53224,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -53241,7 +53254,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 												horario: '',
 												inicioclases: '',
 												contador: 1,
-												limit: 3
+												limit: 3,
+												docentes: [],
+												iddocente: {}
 								};
 				},
 
@@ -53271,6 +53286,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 																								this.tituloModal = 'Actualizar Datos de Curso';
 																								this.tipoAccion = 2;
 																								this.id = data['idCurso'];
+																								this.iddocente = data['idDocente'];
 																								this.especialidad = data['curso_especialidad'];
 																								this.duracion = data['curso_duracion'];
 																								this.modalidad = data['curso_modalidad'];
@@ -53285,6 +53301,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 												axios.get('/api/getcurso').then(function (response) {
 																me.cursos = response.data;
 																console.log(me.cursos);
+												});
+								},
+								DataDocente: function DataDocente() {
+												var me = this;
+												axios.get('/api/datadocente').then(function (response) {
+																me.docentes = response.data;
+																console.log(me.docentes);
 												});
 								},
 								EliminarCurso: function EliminarCurso(id) {
@@ -53307,7 +53330,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 																'curso_duracion': me.duracion,
 																'curso_modalidad': me.modalidad,
 																'curso_horario': me.horario,
-																'curso_inicio_clases': me.inicioclases
+																'curso_inicio_clases': me.inicioclases,
+																'idDocente': me.iddocente
 
 												}).then(function (data) {
 																if (data.data.status === 'success') {
@@ -53330,7 +53354,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 																'curso_duracion': me.duracion,
 																'curso_modalidad': me.modalidad,
 																'curso_horario': me.horario,
-																'curso_inicio_clases': me.inicioclases
+																'curso_inicio_clases': me.inicioclases,
+																'idDocente': me.iddocente
 												}).then(function (data) {
 																if (data.data.status === 'success') {
 																				me.cerrarModal();
@@ -53350,6 +53375,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 								var self = this;
 								setTimeout(function () {
 												self.DataCurso();
+												self.DataDocente();
 								}, 2000);
 				}
 
@@ -53532,6 +53558,56 @@ var render = function() {
                           }
                         }
                       })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("Seleccione un Docente")]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.iddocente,
+                              expression: "iddocente"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.iddocente = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            }
+                          }
+                        },
+                        _vm._l(_vm.docentes, function(datadocente) {
+                          return _c(
+                            "option",
+                            { domProps: { value: datadocente.idDocente } },
+                            [
+                              _vm._v(
+                                "\n\t                                                " +
+                                  _vm._s(datadocente.docente_nombres) +
+                                  " " +
+                                  _vm._s(datadocente.docente_apellidos) +
+                                  "\n\t                                            "
+                              )
+                            ]
+                          )
+                        }),
+                        0
+                      )
                     ])
                   ])
                 ]
@@ -53626,6 +53702,14 @@ var render = function() {
                   "tbody",
                   _vm._l(_vm.cursos, function(datacursos) {
                     return _c("tr", { key: datacursos.idCurso }, [
+                      _c("td", [
+                        _vm._v(
+                          _vm._s(datacursos.docente_nombres) +
+                            " " +
+                            _vm._s(datacursos.docente_apellidos)
+                        )
+                      ]),
+                      _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(datacursos.curso_especialidad))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(datacursos.curso_duracion))]),
@@ -53696,6 +53780,8 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
+        _c("th", [_vm._v("Docente")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Especialidad")]),
         _vm._v(" "),
         _c("th", [_vm._v("Duracion")]),

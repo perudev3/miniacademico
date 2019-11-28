@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 use App\Model\Cursos;
+use App\Model\Docente;
 use Illuminate\Http\Request;
 
 class CursoController extends Controller
 {
-    public function GetDataCurso(){
-    	return Cursos::all();
+    public function GetDataCurso(){    	
+        return \DB::table('curso')->join('docente','curso.idDocente','=','docente.idDocente')->select('curso.*', 'docente.*')->get();  
+    }
+
+    public function GetDataDocente(){
+        return Docente::all();
     }
 
     public function PostCurso(Request $requests){

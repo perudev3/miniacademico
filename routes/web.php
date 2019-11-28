@@ -46,6 +46,7 @@ Route::get('/api/getcurso', 'CursoController@GetDataCurso');
 Route::post('/api/curso', 'CursoController@PostCurso');
 Route::delete('/api/curso/{id}', 'CursoController@DeleteCurso');
 Route::put('/api/curso', 'CursoController@UpdateCurso');
+Route::get('/api/datadocente', 'CursoController@GetDataDocente');
 
 
 Route::get('alumno', function(){

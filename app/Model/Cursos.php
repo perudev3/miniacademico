@@ -8,7 +8,7 @@ class Cursos extends Model
 {
     protected $table='curso';
 
-    protected $fillable = ['curso_especialidad','curso_duracion','curso_modalidad','curso_horario', 'curso_inicio_clases'];
+    protected $fillable = ['idDocente','curso_especialidad','curso_duracion','curso_modalidad','curso_horario', 'curso_inicio_clases'];
 
     protected $primaryKey = 'idCurso';
 

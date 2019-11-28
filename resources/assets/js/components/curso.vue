@@ -50,7 +50,18 @@
                                         <input type="text" v-model="inicioclases" class="form-control">
                                             
                                     </div>
+                                    <div class="col-md-6">
+	                                        <label>Seleccione un Docente</label>
+	                                        
+	                                        <select  v-model="iddocente" class="form-control">
+	                                            <option v-for="datadocente in docentes" :value="datadocente.idDocente">
+	                                                {{datadocente.docente_nombres}} {{datadocente.docente_apellidos}}
+	                                            </option>
+	                                        </select>
+	                                        
+	                                </div>
                                 </div>
+                                
                         	</form>
                         	
                         </div>
@@ -81,6 +92,7 @@
 			                <table class="table table-striped dataTable table-bordered table-sm">
 			                	<thead>
 			                		<tr>
+			                			<th>Docente</th>
 			                			<th>Especialidad</th>
 				                		<th>Duracion</th>
 				                		<th>Modalidad</th>
@@ -93,6 +105,7 @@
 			                	</thead>
 			                	<tbody>
 			                		<tr v-for="datacursos in cursos" :key="datacursos.idCurso">
+			                			<td>{{datacursos.docente_nombres}} {{datacursos.docente_apellidos}}</td>
 			                			<td>{{datacursos.curso_especialidad}}</td>
 			                			<td>{{datacursos.curso_duracion}}</td>
 			                			<td>{{datacursos.curso_modalidad}}</td>
@@ -135,6 +148,8 @@
 	                    inicioclases:'',
 	                    contador: 1,
 	                    limit: 3,
+	                    docentes:[],
+	                    iddocente:{},
 	                 }
 	              },
 
@@ -163,6 +178,7 @@
                                 this.tituloModal='Actualizar Datos de Curso';
                                 this.tipoAccion=2;
                                 this.id=data['idCurso'];
+                                this.iddocente=data['idDocente'];
                                 this.especialidad=data['curso_especialidad'];
                                 this.duracion = data['curso_duracion'];
                                 this.modalidad = data['curso_modalidad'];
@@ -178,6 +194,14 @@
 	                 axios.get('/api/getcurso').then(function(response){
 	                    me.cursos=response.data;
 	                    console.log(me.cursos);
+	                 })
+	            },
+
+	            DataDocente(){
+	            	let me = this;
+	                 axios.get('/api/datadocente').then(function(response){
+	                    me.docentes=response.data;
+	                    console.log(me.docentes);
 	                 })
 	            },
 
@@ -203,7 +227,8 @@
 	                	'curso_duracion':me.duracion,
 	                	'curso_modalidad':me.modalidad,
 	                	'curso_horario':me.horario,
-	                	'curso_inicio_clases':me.inicioclases
+	                	'curso_inicio_clases':me.inicioclases,
+	                	'idDocente':me.iddocente
 
 	                }).then(function(data){
 	                    if (data.data.status === 'success') {
@@ -228,7 +253,8 @@
 	                	'curso_duracion':me.duracion,
 	                	'curso_modalidad':me.modalidad,
 	                	'curso_horario':me.horario,
-	                	'curso_inicio_clases':me.inicioclases
+	                	'curso_inicio_clases':me.inicioclases,
+	                	'idDocente':me.iddocente
 	                }).then(function(data){
 	                    if (data.data.status === 'success') {
                        			me.cerrarModal();
@@ -249,6 +275,7 @@
 	        	let self = this
 	            setTimeout(function(){
 	                self.DataCurso();
+	                self.DataDocente();
 	            },2000);
 	        }
 
