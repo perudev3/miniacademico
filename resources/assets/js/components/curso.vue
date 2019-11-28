@@ -1,6 +1,6 @@
 <template>
-	<div class="container">
-	    <div class="row justify-content-center">
+	<div class="row">
+	    
 	    	<div class="modal" :class="{'mostrar' : modal}" style="overflow-y: auto;">
                     <div class="modal-content login" style="width: auto !important;">
                         <div class="modal-header">
@@ -61,45 +61,58 @@
                         </div>
                     </div>
             </div>
-	        <div class="col-md-8">
-	        	<div>
-			    	<section style="padding: 20px">
-			            <button class="btn btn-primary" @click="abrirModal('agregar')">Nuevo Curso</button>		            
-			        </section>
-			    </div>
-	            <div class="card table-responsive">
-	                <div class="card-header">Cursos</div>
+	        <div class="container">
+	        	<div class="ibox float-e-margins">
+	        		<div class="ibox-content">
+	        			<div>
+	        				<section style="padding: 20px">
+					            <button class="btn btn-primary" @click="abrirModal('agregar')">Nuevo Curso</button>		            
+					        </section>
+	        			</div>
+	        			<div class="table-responsive">
+			                </header> 
+						               <div>
+							               	<section style="padding: 20px">
+							               		<h3><b>Cursos</b></h3>
+							               	</section>
+						               </div> 
+						           </header>
 
-	                <table class="table table-striped dataTable table-bordered table-sm">
-	                	<thead>
-	                		<tr>
-	                			<th>Especialidad</th>
-		                		<th>Duracion</th>
-		                		<th>Modalidad</th>
-		                		<th>Horario</th>
-		                		<th>Inicio de Clases</th>
-		                		<th>
-		                			Opciones
-		                		</th>
-	                		</tr>	                		
-	                	</thead>
-	                	<tbody>
-	                		<tr v-for="datacursos in cursos" :key="datacursos.idCurso">
-	                			<td>{{datacursos.curso_especialidad}}</td>
-	                			<td>{{datacursos.curso_duracion}}</td>
-	                			<td>{{datacursos.curso_modalidad}}</td>
-	                			<td>{{datacursos.curso_horario}}</td>
-	                			<td>{{datacursos.curso_inicio_clases}}</td>
-	                			<td>
-	                				<button name="Editar" class="btn btn-primary" @click="abrirModal('editar',datacursos)">Editar</button>
-				                   <button name="eliminar" class="btn btn-yellow" @click="EliminarCurso(datacursos.idCurso)">Eliminar</button>
-	                			</td>
-	                		</tr>
-	                	</tbody>
-	                </table>
-	            </div>
+			                <table class="table table-striped dataTable table-bordered table-sm">
+			                	<thead>
+			                		<tr>
+			                			<th>Especialidad</th>
+				                		<th>Duracion</th>
+				                		<th>Modalidad</th>
+				                		<th>Horario</th>
+				                		<th>Inicio de Clases</th>
+				                		<th>
+				                			Opciones
+				                		</th>
+			                		</tr>	                		
+			                	</thead>
+			                	<tbody>
+			                		<tr v-for="datacursos in cursos" :key="datacursos.idCurso">
+			                			<td>{{datacursos.curso_especialidad}}</td>
+			                			<td>{{datacursos.curso_duracion}}</td>
+			                			<td>{{datacursos.curso_modalidad}}</td>
+			                			<td>{{datacursos.curso_horario}}</td>
+			                			<td>{{datacursos.curso_inicio_clases}}</td>
+			                			<td>
+			                				<button name="Editar" class="btn btn-primary" @click="abrirModal('editar',datacursos)">Editar</button>
+						                   <button name="eliminar" class="btn btn-yellow" @click="EliminarCurso(datacursos.idCurso)">Eliminar</button>
+			                			</td>
+			                		</tr>
+			                	</tbody>
+			                </table>
+			            </div>
+	        			
+	        		</div>
+			    	
+			    </div>
+	            
 	        </div>
-	    </div>
+	    
 	</div>
 </template>
 

@@ -56,3 +56,16 @@ Route::get('/api/getalumno', 'AlumnoController@GetDataAlumno');
 Route::post('/api/alumno', 'AlumnoController@PostAlumno');
 Route::delete('/api/alumno/{id}', 'AlumnoController@DeleteAlumno');
 Route::put('/api/alumno', 'AlumnoController@UpdateAlumno');
+
+
+Route::get('inscripcion', function(){
+	return view('inscripcion');
+})->name('inscripcion');
+
+Route::get('/api/getinscripcion', 'InscripcionController@GetDataInscripcion');
+Route::post('/api/inscripcion', 'InscripcionController@PostInscripcion');
+Route::delete('/api/inscripcion/{id}', 'InscripcionController@DeleteInscripcion');
+Route::put('/api/inscripcion', 'InscripcionController@UpdateInscripcion');
+
+Route::get('/alumnos/listar', 'InscripcionController@Alumnos');
+Route::get('/docentes/listar', 'InscripcionController@Docentes');

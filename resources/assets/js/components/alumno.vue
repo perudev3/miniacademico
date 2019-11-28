@@ -1,6 +1,6 @@
 <template>
-	<div class="container">
-	    <div class="row justify-content-center">
+	<div class="row">
+	    
 	    	<div class="modal" :class="{'mostrar' : modal}" style="overflow-y: auto;">
                     <div class="modal-content login" style="width: 80% !important;">
                         <div class="modal-header">
@@ -185,83 +185,95 @@
                         </div>
                     </div>
             </div>
-	        <div class="row">
-	        	<div>
-			    	<section style="padding: 20px">
-			            <button class="btn btn-primary" @click="abrirModal('agregar')">Nuevo Alumno</button>		            
-			        </section>
-			    </div>
-	            <div class="card table-responsive">
-	                <div class="card-header">Alumnos</div>
+	        <div class="container">
+	        	<div class="ibox float-e-margins">
+	        		<div class="ibox-content">
+	        			<div>
+					    	<section style="padding: 20px">
+					            <button class="btn btn-primary" @click="abrirModal('agregar')">Nuevo Alumno</button>		            
+					        </section>
+					    </div>
+			            <div class="table-responsive">
+			               </header> 
+				               <div>
+					               	<section style="padding: 20px">
+					               		<h3><b>Alumnos</b></h3>
+					               	</section>
+				               </div> 
+				           </header>
 
-	                <table class="table table-striped dataTable table-bordered table-sm">
-	                	<thead>
-	                		<tr>
-	                			<th>Nombres</th>
-		                		<th>Apellidos</th>
-		                		<th>CI</th>
-		                		<th>CU</th>
-		                		<th>Telefono</th>
-		                		<th>Celular</th>
-		                		<th>Email</th>
-		                		<th>Domicilio</th>
-		                		<th>Foto</th>
-		                		<th>Estudio Universitario</th>
-		                		<th>Tecnico</th>
-		                		<th>Licenciatura</th>
-		                		<th>Posgrado</th>
-		                		<th>Carrera</th>
-		                		<th>Curso</th>
-		                		<th>Titulo Obtenido</th>
-		                		<th>Titulo Obtenido</th>
-		                		<th>Titulo Obtenido</th>		                		
-		                		<th>
-		                			Opciones
-		                		</th>
-	                		</tr>	                		
-	                	</thead>
-	                	<tbody>
-	                		<tr v-for="dataalumno in alumnos" :key="dataalumno.idAlumno">
-	                			<td>{{dataalumno.alumno_nombres}}</td>
-	                			<td>{{dataalumno.alumno_apellidos}}</td>
-	                			<td>{{dataalumno.alumno_CI}}</td>
-	                			<td>{{dataalumno.alumno_CU}}</td>
-	                			<td>{{dataalumno.alumno_telefono}}</td>
-	                			<td>{{dataalumno.alumno_celular}}</td>
-	                			<td>{{dataalumno.alumno_email}}</td>
-	                			<td>{{dataalumno.alumno_domicilio}}</td>
-	                			<td>
-	                				<figure class="photo">
-	                					<img :src="'http://127.0.0.1:8000/avatar/'+dataalumno.alumno_foto+''" id="img" />
-	                				</figure>
-	                			</td>
-	                			<td>
-	                				<input type="checkbox" :checked="dataalumno.alumno_estudio_universitario" >
-	                			</td>
-	                			<td>
-	                				<input type="checkbox" :checked="dataalumno.alumno_tecnico" >
-	                			</td>
-	                			<td>
-	                				<input type="checkbox" :checked="dataalumno.alumno_licenciatura" >
-	                			</td>
-	                			<td>
-	                				<input type="checkbox" :checked="dataalumno.alumno_posgrado" >
-	                			</td>
-	                			<td>{{dataalumno.alumno_carrera}}</td>
-	                			<td>{{dataalumno.alumno_curso}}</td>
-	                			<td>{{dataalumno.alumno_titulo_obtenido1}}</td>
-	                			<td>{{dataalumno.alumno_titulo_obtenido2}}</td>
-	                			<td>{{dataalumno.alumno_titulo_obtenido3}}</td>
-	                			<td>
-	                				<button name="Editar" class="btn btn-primary" @click="abrirModal('editar',dataalumno)">Editar</button>
-				                   <button name="eliminar" class="btn btn-yellow" @click="EliminarCurso(dataalumno.idAlumno)">Eliminar</button>
-	                			</td>
-	                		</tr>
-	                	</tbody>
-	                </table>
-	            </div>
+			                <table class="table table-striped dataTable table-bordered table-sm">
+			                	<thead>
+			                		<tr>
+			                			<th>Nombres</th>
+				                		<th>Apellidos</th>
+				                		<th>CI</th>
+				                		<th>CU</th>
+				                		<th>Telefono</th>
+				                		<th>Celular</th>
+				                		<th>Email</th>
+				                		<th>Domicilio</th>
+				                		<th>Foto</th>
+				                		<th>Estudio Universitario</th>
+				                		<th>Tecnico</th>
+				                		<th>Licenciatura</th>
+				                		<th>Posgrado</th>
+				                		<th>Carrera</th>
+				                		<th>Curso</th>
+				                		<th>Titulo Obtenido</th>
+				                		<th>Titulo Obtenido</th>
+				                		<th>Titulo Obtenido</th>		                		
+				                		<th>
+				                			Opciones
+				                		</th>
+			                		</tr>	                		
+			                	</thead>
+			                	<tbody>
+			                		<tr v-for="dataalumno in alumnos" :key="dataalumno.idAlumno">
+			                			<td>{{dataalumno.alumno_nombres}}</td>
+			                			<td>{{dataalumno.alumno_apellidos}}</td>
+			                			<td>{{dataalumno.alumno_CI}}</td>
+			                			<td>{{dataalumno.alumno_CU}}</td>
+			                			<td>{{dataalumno.alumno_telefono}}</td>
+			                			<td>{{dataalumno.alumno_celular}}</td>
+			                			<td>{{dataalumno.alumno_email}}</td>
+			                			<td>{{dataalumno.alumno_domicilio}}</td>
+			                			<td>
+			                				<figure class="photo">
+			                					<img :src="'http://127.0.0.1:8000/avatar/'+dataalumno.alumno_foto+''" id="img" />
+			                				</figure>
+			                			</td>
+			                			<td>
+			                				<input type="checkbox" :checked="dataalumno.alumno_estudio_universitario" >
+			                			</td>
+			                			<td>
+			                				<input type="checkbox" :checked="dataalumno.alumno_tecnico" >
+			                			</td>
+			                			<td>
+			                				<input type="checkbox" :checked="dataalumno.alumno_licenciatura" >
+			                			</td>
+			                			<td>
+			                				<input type="checkbox" :checked="dataalumno.alumno_posgrado" >
+			                			</td>
+			                			<td>{{dataalumno.alumno_carrera}}</td>
+			                			<td>{{dataalumno.alumno_curso}}</td>
+			                			<td>{{dataalumno.alumno_titulo_obtenido1}}</td>
+			                			<td>{{dataalumno.alumno_titulo_obtenido2}}</td>
+			                			<td>{{dataalumno.alumno_titulo_obtenido3}}</td>
+			                			<td>
+			                				<button name="Editar" class="btn btn-primary" @click="abrirModal('editar',dataalumno)">Editar</button>
+						                   <button name="eliminar" class="btn btn-yellow" @click="EliminarCurso(dataalumno.idAlumno)">Eliminar</button>
+			                			</td>
+			                		</tr>
+			                	</tbody>
+			                </table>
+			            </div>
+	        		</div>
+	        		
+	        	</div>
+	        	
 	        </div>
-	    </div>
+	    
 	</div>
 </template>
 

@@ -1,6 +1,5 @@
 <template>
-	<div class="container">
-	    <div class="row justify-content-center">
+	<div class="row">
 	    	<div class="modal" :class="{'mostrar' : modal}" style="overflow-y: auto;">
                     <div class="modal-content login" style="width: auto !important;">
                         <div class="modal-header">
@@ -52,14 +51,22 @@
                         </div>
                     </div>
             </div>
-	        <div class="col-md-8">
-	        	<div>
+	        <div class="container">
+	        	<div class="ibox float-e-margins">
+	        		<div class="ibox-content">
+	        			<div>
 			    	<section style="padding: 20px">
 			            <button class="btn btn-primary" @click="abrirModal('agregar')">Nuevo Docente</button>		            
 			        </section>
 			    </div>
-	            <div class="card table-responsive">
-	                <div class="card-header">Docentes</div>
+	            <div class="table-responsive">
+	                </header> 
+				        <div>
+					         <section style="padding: 20px">
+					          <h3><b>Alumnos</b></h3>
+					         </section>
+				        </div> 
+				    </header>
 
 	                <table class="table table-striped dataTable table-bordered table-sm">
 	                	<thead>
@@ -87,8 +94,10 @@
 	                	</tbody>
 	                </table>
 	            </div>
+	        		</div>
+	        	</div>
+	        	
 	        </div>
-	    </div>
 	</div>
 </template>
 
