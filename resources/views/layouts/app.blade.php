@@ -76,6 +76,10 @@
                     <li class="nav-item">
                         <a href="{{ route('inscripcion') }}"><i class="fa fa-user"></i> <span class="menu-item-parent">Inscripcion</span></a>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('pagos') }}"><i class="fa fa-user"></i> <span class="menu-item-parent">Pagos</span></a>
+                    </li>
                 @endif
             </ul>
           </div>

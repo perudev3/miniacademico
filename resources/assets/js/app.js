@@ -11,7 +11,7 @@ import viewdocente from './components/docente.vue';
 import viewcurso from './components/curso.vue';
 import viewalumno from './components/alumno.vue';
 import viewinscripcion from './components/inscripcion.vue';
-
+import viewpagos from './components/pagos.vue';
 
 
 const routes = [
@@ -21,7 +21,8 @@ const routes = [
                 docente: viewdocente,
                 curso: viewcurso,
                 alumno: viewalumno,
-                inscripcion: viewinscripcion,            	
+                inscripcion: viewinscripcion, 
+                pagos: viewpagos,            	
             }
     }
 ]

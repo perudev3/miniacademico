@@ -1,0 +1,39 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class Pagos extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('pagos', function (Blueprint $table) {
+            $table->increments('idPagos');
+            $table->string('numero_vaucher');
+            $table->date('fecha');
+            $table->integer('idCurso');
+            $table->integer('idAlumno');
+            $table->double('pago_parcial');
+            $table->double('pago_costo');
+            $table->double('pago_total');
+            $table->rememberToken();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('pagos');
+    }
+}

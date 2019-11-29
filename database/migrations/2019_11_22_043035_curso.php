@@ -21,6 +21,7 @@ class Curso extends Migration
             $table->string('curso_modalidad');
             $table->string('curso_horario');
             $table->string('curso_inicio_clases');
+            $table->double('curso_costo');
             $table->rememberToken();
             $table->timestamps();
         });

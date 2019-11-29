@@ -70,3 +70,17 @@ Route::put('/api/inscripcion', 'InscripcionController@UpdateInscripcion');
 
 Route::get('/alumnos/listar', 'InscripcionController@Alumnos');
 Route::get('/docentes/listar', 'InscripcionController@Docentes');
+
+
+Route::get('pagos', function(){
+	return view('pagos');
+})->name('pagos');
+
+Route::get('/api/getpagos', 'PagosController@GetDataPagos');
+Route::post('/api/pagos', 'PagosController@PostPagos');
+Route::delete('/api/pagos/{id}', 'PagosController@DeletePagos');
+Route::put('/api/pagos', 'PagosController@UpdatePagos');
+
+Route::get('/alumnos/listar', 'PagosController@GetDataAlumnos');
+Route::get('/cursos/listar', 'PagosController@GetDataCursos');
+Route::get('/api/preciocurso/{id}', 'PagosController@CostoCurso');
