@@ -33,6 +33,7 @@ class Alumno extends Migration
             $table->string('alumno_titulo_obtenido1');
             $table->string('alumno_titulo_obtenido2');
             $table->string('alumno_titulo_obtenido3');
+            $table->integer('idrol');
             $table->rememberToken();
             $table->timestamps();
         });

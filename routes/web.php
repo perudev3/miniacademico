@@ -18,10 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('admin', 'AdminController');
 
 Route::group(['prefix' => 'auth'], function () {
-    Route::get('/{provider}', 'Auth\LoginController@redirectToProvider');
-    Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+    Route::get('/{provider}', 'Auth\LoginGoogle@redirectToProvider');
+    Route::get('/{provider}/callback', 'Auth\LoginGoogle@handleProviderCallback');
 
     Route::get('/{provider}', 'Auth\AuthFacebook@redirectToProvider');
 	Route::get('/{provider}/callback', 'Auth\AuthFacebook@handleProviderCallback');
@@ -84,3 +85,11 @@ Route::put('/api/pagos', 'PagosController@UpdatePagos');
 Route::get('/alumnos/listar', 'PagosController@GetDataAlumnos');
 Route::get('/cursos/listar', 'PagosController@GetDataCursos');
 Route::get('/api/preciocurso/{id}', 'PagosController@CostoCurso');
+
+
+
+Route::get('pagosalumno', function(){
+	return view('pagosalumno');
+})->name('pagosalumno');
+
+Route::get('/api/getpagosalumno', 'PagosController@GetDataPagosAlumno');

@@ -10,7 +10,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Control Restaurante </title>
+    <title>Mini Academico </title>
     
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
@@ -63,7 +63,7 @@
                     <li class="nav-item">
                         <a href="{{ route('register') }}"><i class="fa fa-user"></i> <span class="menu-item-parent">Register</span></a>
                     </li>
-                @else
+                @elseif(Auth::user()->getRol() == 'Administrador')
                     <li class="nav-item">
                         <a href="{{ route('docente') }}"><i class="fa fa-user"></i> <span class="menu-item-parent">Docente</span></a>
                     </li>
@@ -80,6 +80,9 @@
                     <li class="nav-item">
                         <a href="{{ route('pagos') }}"><i class="fa fa-user"></i> <span class="menu-item-parent">Pagos</span></a>
                     </li>
+                @elseif(Auth::user()->getRol() == 'Alumno')
+
+
                 @endif
             </ul>
           </div>

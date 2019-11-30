@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','provider','provider_id',
+        'name', 'email', 'password','idrol','provider','provider_id',
     ];
 
     /**
@@ -26,4 +26,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected $primaryKey = 'id';
+
+
+    public function getRol()
+    {
+        $rol = \DB::table('roles')->where('idrol', $this->idrol)->first();
+        return $rol->rol_nombre;
+    }
 }

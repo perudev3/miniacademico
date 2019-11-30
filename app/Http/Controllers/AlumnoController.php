@@ -38,6 +38,7 @@ class AlumnoController extends Controller
 	            'alumno_titulo_obtenido1'=>$requests['alumno_titulo_obtenido1'],
 	            'alumno_titulo_obtenido2'=>$requests['alumno_titulo_obtenido2'],
 	            'alumno_titulo_obtenido3'=>$requests['alumno_titulo_obtenido3'],
+	            'idrol'=>2,
 	        ]);
         }elseif ($requests['alumno_tecnico']==true) {
         	$postalumno=Alumno::create([
@@ -59,6 +60,7 @@ class AlumnoController extends Controller
 	            'alumno_titulo_obtenido1'=>$requests['alumno_titulo_obtenido1'],
 	            'alumno_titulo_obtenido2'=>$requests['alumno_titulo_obtenido2'],
 	            'alumno_titulo_obtenido3'=>$requests['alumno_titulo_obtenido3'],
+	            'idrol'=>2,
 	        ]);
         }elseif ($requests['alumno_licenciatura']==true) {
         	$postalumno=Alumno::create([
@@ -80,6 +82,7 @@ class AlumnoController extends Controller
 	            'alumno_titulo_obtenido1'=>$requests['alumno_titulo_obtenido1'],
 	            'alumno_titulo_obtenido2'=>$requests['alumno_titulo_obtenido2'],
 	            'alumno_titulo_obtenido3'=>$requests['alumno_titulo_obtenido3'],
+	            'idrol'=>2,
 	        ]);
         }elseif ($requests['alumno_posgrado']==true) {
         	$postalumno=Alumno::create([
@@ -101,6 +104,7 @@ class AlumnoController extends Controller
 	            'alumno_titulo_obtenido1'=>$requests['alumno_titulo_obtenido1'],
 	            'alumno_titulo_obtenido2'=>$requests['alumno_titulo_obtenido2'],
 	            'alumno_titulo_obtenido3'=>$requests['alumno_titulo_obtenido3'],
+	            'idrol'=>2,
 	        ]);
         }
     	

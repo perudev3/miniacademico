@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Model\Alumno;
 use App\Model\Cursos;
 use App\Model\Pagos;
+use App\Model\Roles;
 use Illuminate\Http\Request;
 
 class PagosController extends Controller
@@ -18,6 +19,18 @@ class PagosController extends Controller
 
     public function GetDataPagos(){
     	return \DB::table('pagos')->join('curso','pagos.idCurso','=','curso.idCurso')->join('alumno','pagos.idAlumno','=','alumno.idAlumno')->select('pagos.*', 'curso.*', 'alumno.*')->get();  
+    }
+
+    public function GetDataPagosAlumno(){
+
+        $user=\Auth::user()->idrol;
+
+        $alumno=Alumno::where('idrol',$user)->first();
+        $idalumno= $alumno->idAlumno;
+
+        return \DB::table('pagos')->join('curso','pagos.idCurso','=','curso.idCurso')->join('alumno','pagos.idAlumno','=','alumno.idAlumno')->where('pagos.idAlumno',$idalumno)->get();  
+
+
     }
 
     public function PostPagos(Request $requests){
