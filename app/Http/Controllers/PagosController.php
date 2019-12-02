@@ -23,12 +23,7 @@ class PagosController extends Controller
 
     public function GetDataPagosAlumno(){
 
-        $user=\Auth::user()->idrol;
-
-        $alumno=Alumno::where('idrol',$user)->first();
-        $idalumno= $alumno->idAlumno;
-
-        return \DB::table('pagos')->join('curso','pagos.idCurso','=','curso.idCurso')->join('alumno','pagos.idAlumno','=','alumno.idAlumno')->where('pagos.idAlumno',$idalumno)->get();  
+        return \DB::table('pagos')->join('curso','pagos.idCurso','=','curso.idCurso')->join('alumno','pagos.idAlumno','=','alumno.idAlumno')->get();  
 
 
     }

@@ -9,7 +9,14 @@
 
                         <div class="modal-body">
                         	<form action="" method="post" enctype="multipart/form-data" files="true">
-	                            <div class="row">	                            	 
+	                            <div class="row">	
+
+	                            	<div class="col-md-6">
+	                                    <label>Nombre del Curso</label>
+	                                    
+	                                    <input type="text" v-model="nombre" class="form-control">
+	                                    
+                                    </div>                            	 
 	                            
                                     <div class="col-md-6">
 	                                    <label>Especialidad</label>
@@ -93,6 +100,7 @@
 			                	<thead>
 			                		<tr>
 			                			<th>Docente</th>
+			                			<th>Nombre Curso</th>
 			                			<th>Especialidad</th>
 				                		<th>Duracion</th>
 				                		<th>Modalidad</th>
@@ -106,6 +114,7 @@
 			                	<tbody>
 			                		<tr v-for="datacursos in cursos" :key="datacursos.idCurso">
 			                			<td>{{datacursos.docente_nombres}} {{datacursos.docente_apellidos}}</td>
+			                			<td>{{datacursos.curso_nombre}}</td>
 			                			<td>{{datacursos.curso_especialidad}}</td>
 			                			<td>{{datacursos.curso_duracion}}</td>
 			                			<td>{{datacursos.curso_modalidad}}</td>
@@ -141,6 +150,7 @@
 	                    tituloModal:'',
 	                    tipoAccion:0,
 	                    id:'',
+	                    nombre:'',
 	                    especialidad:'',
 	                    duracion:'',
 	                    modalidad:'',
@@ -165,6 +175,7 @@
                                 this.modal = 1;
                                 this.tituloModal = 'Agregar Curso';
                                 this.tipoAccion = 1;
+                                this.nombre='';
                                 this.especialidad='';
                                 this.duracion='';
                                 this.modalidad='';
@@ -179,6 +190,7 @@
                                 this.tipoAccion=2;
                                 this.id=data['idCurso'];
                                 this.iddocente=data['idDocente'];
+                                this.nombre=data['curso_nombre'];
                                 this.especialidad=data['curso_especialidad'];
                                 this.duracion = data['curso_duracion'];
                                 this.modalidad = data['curso_modalidad'];
@@ -223,6 +235,7 @@
 	            	let me = this;
 	                axios.put('/api/curso',{
 	                	'id':me.id,
+	                	'curso_nombre':me.nombre,
 	                	'curso_especialidad':me.especialidad,
 	                	'curso_duracion':me.duracion,
 	                	'curso_modalidad':me.modalidad,
@@ -249,6 +262,7 @@
 	            RegistrarCurso(){
 	            	let me = this;
 	                axios.post('/api/curso',{
+	                	'curso_nombre':me.nombre,
 	                	'curso_especialidad':me.especialidad,
 	                	'curso_duracion':me.duracion,
 	                	'curso_modalidad':me.modalidad,

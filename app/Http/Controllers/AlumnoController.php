@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Model\Alumno;
+use App\Model\Cursos;
+use App\Model\Docente;
 use Illuminate\Http\Request;
 
 class AlumnoController extends Controller
@@ -221,5 +223,10 @@ class AlumnoController extends Controller
         }else{
         	return [ "status" => "error", "message" => "Error al Registrar"];
         }
+    }
+
+
+    public function GetDataAlumnosLista(){
+    	return \DB::table('inscripcion')->join('curso','inscripcion.idCurso','=','curso.idCurso')->join('alumno','inscripcion.idAlumno','=','alumno.idAlumno')->join('docente','curso.idDocente','=','docente.idDocente')->select('curso.*', 'docente.*','alumno.*')->get();
     }
 }

@@ -17,6 +17,7 @@ class CursoController extends Controller
 
     public function PostCurso(Request $requests){
     	$postuser=Cursos::create([
+            'curso_nombre'=>$requests['curso_nombre'],
             'curso_especialidad'=>$requests['curso_especialidad'],
             'curso_duracion'=>$requests['curso_duracion'],
             'curso_modalidad'=>$requests['curso_modalidad'],
@@ -41,6 +42,7 @@ class CursoController extends Controller
     public function UpdateCurso(Request $requests){
         $curso=Cursos::where('idCurso', $requests['id'])->first();
         $curso->fill([
+            'curso_nombre'=>$requests['curso_nombre'],
             'curso_especialidad'=>$requests['curso_especialidad'],
             'curso_duracion'=>$requests['curso_duracion'],
             'curso_modalidad'=>$requests['curso_modalidad'],

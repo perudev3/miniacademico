@@ -19,6 +19,7 @@ class Docente extends Migration
             $table->string('docente_apellidos');
             $table->string('docente_direccion');
             $table->string('docente_celular');
+            $table->integer('idrol');
             $table->rememberToken();
             $table->timestamps();
         });

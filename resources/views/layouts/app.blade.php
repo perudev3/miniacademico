@@ -80,8 +80,14 @@
                     <li class="nav-item">
                         <a href="{{ route('pagos') }}"><i class="fa fa-user"></i> <span class="menu-item-parent">Pagos</span></a>
                     </li>
-                @elseif(Auth::user()->getRol() == 'Alumno')
+                @elseif(Auth::user()->getRol() == 'Docente')
+                    <li class="nav-item">
+                        <a href="{{ route('pagosalumno') }}"><i class="fa fa-user"></i> <span class="menu-item-parent">Pagos de Alumnos</span></a>
+                    </li>
 
+                    <li class="nav-item">
+                        <a href="{{ route('alumnoslista') }}"><i class="fa fa-user"></i> <span class="menu-item-parent">Lista de Alumnos</span></a>
+                    </li>
 
                 @endif
             </ul>

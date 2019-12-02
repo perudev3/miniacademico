@@ -93,3 +93,11 @@ Route::get('pagosalumno', function(){
 })->name('pagosalumno');
 
 Route::get('/api/getpagosalumno', 'PagosController@GetDataPagosAlumno');
+
+
+
+Route::get('alumnoslista', function(){
+	return view('alumnoslista');
+})->name('alumnoslista');
+
+Route::get('/api/getlistaalumnos', 'AlumnoController@GetDataAlumnosLista');

@@ -13,6 +13,7 @@ import viewalumno from './components/alumno.vue';
 import viewinscripcion from './components/inscripcion.vue';
 import viewpagos from './components/pagos.vue';
 import viewpagosalumno from './components/pagosalumno.vue';
+import viewlistaalumnos from './components/listaAlumnos.vue';
 
 
 const routes = [
@@ -24,7 +25,8 @@ const routes = [
                 alumno: viewalumno,
                 inscripcion: viewinscripcion, 
                 pagos: viewpagos,    
-                pagosalumno: viewpagosalumno,            	
+                pagosalumno: viewpagosalumno,  
+                alumnoslista: viewlistaalumnos,            	
             }
     }
 ]
